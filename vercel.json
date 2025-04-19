@@ -8,9 +8,24 @@
     ],
     "routes": [
       {
-        "src": "/(.*)",
-        "dest": "/",
+        "src": "/api/(.*)", 
+        "dest": "/server.js",
         "methods": ["GET", "POST", "PUT", "DELETE"]
+      },
+      {
+        "src": "/(.*)", 
+        "dest": "/index.html",
+        "methods": ["GET"]
+      }
+    ],
+    "cleanUrls": true, 
+    "headers": [
+      {
+        "source": "/(.*)", 
+        "headers": [
+          { "key": "Cache-Control", "value": "max-age=0, s-maxage=86400" },
+          { "key": "Content-Security-Policy", "value": "default-src 'self'" }
+        ]
       }
     ]
   }
